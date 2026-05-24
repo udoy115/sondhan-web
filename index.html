@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Shondan — Real-Time AI Fact Checker for Bangladesh</title>
+  <meta name="description" content="Shondan is a free, real-time AI-powered fact-checking app built for Bangladesh. Paste a URL, upload a screenshot, or type a claim — get a TRUE, FALSE, or MISLEADING verdict in seconds.">
+  <meta name="keywords" content="fact checker, AI fact check, Bangladesh misinformation, fake news detector, Shondan app, GPT-4o, truth checker">
+  <meta name="author" content="Shondan Team">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://shondan.app/">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://shondan.app/">
+  <meta property="og:title"       content="Shondan — Real-Time AI Fact Checker">
+  <meta property="og:description" content="Stop believing. Start verifying. AI-powered fact-checking in seconds — free Android app.">
+  <meta property="og:image"       content="https://shondan.app/og-image.png">
+  <meta property="og:locale"      content="en_US">
+  <meta property="og:site_name"   content="Shondan">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Shondan — Real-Time AI Fact Checker">
+  <meta name="twitter:description" content="Fact-check any URL, screenshot, or claim in seconds. Free Android app powered by GPT-4o.">
+  <meta name="twitter:image"       content="https://shondan.app/og-image.png">
+
+  <!-- Favicon (inline SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ── SCROLL PROGRESS ──────────────────── -->
+<div id="scroll-progress"></div>
+
+<!-- ── PAGE LOADER ──────────────────────── -->
+<div id="loader" role="status" aria-label="Loading Shondan">
+  <div class="loader-logo">
+    <div class="loader-logo-dot"></div>
+    SHON<span>DAN</span>
+  </div>
+  <div class="loader-bar-track">
+    <div class="loader-bar-fill"></div>
+  </div>
+</div>
+
+
+
+<!-- ═══════════════════════════════════════
+     NAV
+════════════════════════════════════════ -->
+<nav class="nav" id="main-nav" aria-label="Main navigation">
+  <a href="#" class="nav-logo" id="nav-logo-link" aria-label="Shondan home">
+    <div class="nav-logo-dot" aria-hidden="true"></div>
+    SHON<span class="nav-logo-accent">DAN</span>
+  </a>
+
+  <ul class="nav-links" role="list">
+    <li><a href="#about"        class="nav-link">About</a></li>
+    <li><a href="#features"     class="nav-link">Features</a></li>
+    <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+    <li><a href="#guide"        class="nav-link">User Guide</a></li>
+    <li><a href="#download"     class="nav-link nav-cta" id="nav-download-btn">↓ Download APK</a></li>
+  </ul>
+
+  <button class="nav-hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Drawer -->
+<nav class="nav-mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation">
+  <a href="#about"        class="nav-link">About</a>
+  <a href="#features"     class="nav-link">Features</a>
+  <a href="#how-it-works" class="nav-link">How It Works</a>
+  <a href="#guide"        class="nav-link">User Guide</a>
+  <a href="#download"     class="nav-link nav-cta">↓ Download APK — Free</a>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<header class="hero" id="hero">
+  <div class="hero-bg-mesh"  aria-hidden="true"></div>
+  <div class="hero-grid"     aria-hidden="true"></div>
+
+  <div class="hero-badge" id="hero-badge">
+    <span class="hero-badge-dot" aria-hidden="true"></span>
+    v1.0 — AI Fact Checker for Bangladesh
+  </div>
+
+  <h1 class="hero-title">
+    SHON<span class="hero-title-accent">DAN</span>
+  </h1>
+
+  <p class="hero-sub">
+    Real-time AI-powered fact checking. Paste a URL, upload a screenshot,
+    or type a claim — Shondan searches the web and tells you the truth in seconds.
+  </p>
+
+  <div class="hero-cta-group">
+    <a href="#download" class="btn-primary" id="hero-download-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 16l-4-4h3V4h2v8h3l-4 4z"/>
+        <path d="M4 20h16"/>
+      </svg>
+      Download APK — Free
+    </a>
+    <a href="#how-it-works" class="btn-ghost" id="hero-howto-btn">
+      See how it works →
+    </a>
+  </div>
+
+  <div class="hero-stats" aria-label="Key stats">
+    <div class="hero-stat">
+      <div class="hero-stat-value">GPT-4o</div>
+      <div class="hero-stat-label">Fact Engine</div>
+    </div>
+    <div class="hero-stat-divider" aria-hidden="true"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-value" data-counter="3">3</div>
+      <div class="hero-stat-label">Input Methods</div>
+    </div>
+    <div class="hero-stat-divider" aria-hidden="true"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-value">100%</div>
+      <div class="hero-stat-label">Free to Use</div>
+    </div>
+  </div>
+</header>
+
+<!-- ── TICKER ───────────────────────────── -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-item">AI Fact Checking</div>
+    <div class="ticker-item">URL Scraping</div>
+    <div class="ticker-item">Image Text Extraction</div>
+    <div class="ticker-item">Web Search Verification</div>
+    <div class="ticker-item">Confidence Score</div>
+    <div class="ticker-item">Source Citations</div>
+    <div class="ticker-item">AI Summary</div>
+    <div class="ticker-item">Shondan Chatbot</div>
+    <div class="ticker-item">Search History</div>
+    <div class="ticker-item">Android APK</div>
+    <!-- Duplicate for seamless loop -->
+    <div class="ticker-item">AI Fact Checking</div>
+    <div class="ticker-item">URL Scraping</div>
+    <div class="ticker-item">Image Text Extraction</div>
+    <div class="ticker-item">Web Search Verification</div>
+    <div class="ticker-item">Confidence Score</div>
+    <div class="ticker-item">Source Citations</div>
+    <div class="ticker-item">AI Summary</div>
+    <div class="ticker-item">Shondan Chatbot</div>
+    <div class="ticker-item">Search History</div>
+    <div class="ticker-item">Android APK</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     ABOUT
+════════════════════════════════════════ -->
+<section class="section" id="about">
+  <div class="section-label reveal">What is Shondan</div>
+  <h2 class="section-title reveal d1">Stop believing.<br>Start verifying.</h2>
+  <p class="section-body reveal d2">
+    Shondan is a real-time AI fact-checking app built for the age of misinformation.
+    In seconds, it tells you whether a claim is
+    <strong style="color:var(--true-color)">TRUE</strong>,
+    <strong style="color:var(--false-color)">FALSE</strong>, or
+    <strong style="color:var(--misleading-color)">MISLEADING</strong> — with evidence,
+    sources, and a confidence percentage.
+  </p>
+
+  <div class="about-grid">
+    <div class="about-text reveal-left">
+      <p>
+        Social media is full of fake news, misleading headlines, and viral misinformation.
+        Shondan gives every person the power of a fact-checking team in their pocket.
+      </p>
+      <p>
+        Powered by OpenAI's GPT-4o and Google's Gemini AI, Shondan searches the web,
+        cross-checks multiple sources, and gives you a clear, honest verdict — every time.
+      </p>
+      <div class="about-bullets">
+        <div class="about-bullet">
+          <div class="about-bullet-dot" aria-hidden="true"></div>
+          <span>Fact-checks any claim in under 10 seconds</span>
+        </div>
+        <div class="about-bullet">
+          <div class="about-bullet-dot" aria-hidden="true"></div>
+          <span>Works with URLs, screenshots, and pasted text</span>
+        </div>
+        <div class="about-bullet">
+          <div class="about-bullet-dot" aria-hidden="true"></div>
+          <span>Shows real sources you can verify yourself</span>
+        </div>
+        <div class="about-bullet">
+          <div class="about-bullet-dot" aria-hidden="true"></div>
+          <span>Built-in AI chatbot for deeper discussions</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone-wrap reveal-right" aria-hidden="true">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-header">
+            <div class="phone-logo-text">SHON<span>DAN</span></div>
+            <div class="phone-status-dot"></div>
+          </div>
+          <div class="phone-input">🔗 facebook.com/post/xyz123...</div>
+          <div class="phone-btn">🔍 Fact Check</div>
+          <div class="phone-searching">Searching the web...</div>
+          <div class="phone-result">
+            <div class="phone-verdict-label">❌ FALSE</div>
+            <div class="phone-bar-track">
+              <div class="phone-bar-fill"></div>
+            </div>
+            <div class="phone-source-text">94% confident this is FALSE</div>
+            <div style="margin-top:8px">
+              <div class="phone-source-text">↗ wikipedia.org/Bangladesh</div>
+              <div class="phone-source-text">↗ bbc.com/world-asia</div>
+            </div>
+          </div>
+          <div class="phone-actions">
+            <div class="phone-action-btn">📋 Summary</div>
+            <div class="phone-action-btn">💬 Chat</div>
+          </div>
+        </div>
+        <div class="phone-glow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════
+     FEATURES
+════════════════════════════════════════ -->
+<section class="section" id="features">
+  <div class="section-label reveal">Features</div>
+  <h2 class="section-title reveal d1">Everything you need<br>to fight misinformation.</h2>
+
+  <div class="features-grid">
+    <article class="feature-card reveal d1" id="feat-url">
+      <div class="feature-card-top-bar" aria-hidden="true"></div>
+      <div class="feature-icon" aria-hidden="true">🔗</div>
+      <h3 class="feature-title">URL Fact Check</h3>
+      <p class="feature-desc">Paste any link — news articles, blog posts, Facebook URLs, Reddit threads. Shondan reads the content and verifies it.</p>
+      <span class="feature-tag">Auto Scraping</span>
+    </article>
+
+    <article class="feature-card reveal d2" id="feat-image">
+      <div class="feature-card-top-bar" aria-hidden="true"></div>
+      <div class="feature-icon" aria-hidden="true">🖼️</div>
+      <h3 class="feature-title">Screenshot Check</h3>
+      <p class="feature-desc">Upload a screenshot from any app. Shondan reads the text using AI vision and fact-checks it automatically.</p>
+      <span class="feature-tag">OCR + AI Vision</span>
+    </article>
+
+    <article class="feature-card reveal d3" id="feat-text">
+      <div class="feature-card-top-bar" aria-hidden="true"></div>
+      <div class="feature-icon" aria-hidden="true">📝</div>
+      <h3 class="feature-title">Text Check</h3>
+      <p class="feature-desc">Copy and paste any claim, headline, or statement. Shondan searches the web and cross-checks it against reliable sources.</p>
+      <span class="feature-tag">Instant Verify</span>
+    </article>
+
+    <article class="feature-card reveal d1" id="feat-score">
+      <div class="feature-card-top-bar" aria-hidden="true"></div>
+      <div class="feature-icon" aria-hidden="true">📊</div>
+      <h3 class="feature-title">Confidence Score</h3>
+      <p class="feature-desc">Every result includes a confidence percentage — so you know exactly how certain the AI is about the verdict.</p>
+      <span class="feature-tag">GPT-4o Powered</span>
+    </article>
+
+    <article class="feature-card reveal d2" id="feat-summary">
+      <div class="feature-card-top-bar" aria-hidden="true"></div>
+      <div class="feature-icon" aria-hidden="true">📋</div>
+      <h3 class="feature-title">AI Summary</h3>
+      <p class="feature-desc">One tap generates a clear 10-sentence summary of the full fact-check context, written in plain language.</p>
+      <span class="feature-tag">10 Sentences</span>
+    </article>
+
+    <article class="feature-card reveal d3" id="feat-chat">
+      <div class="feature-card-top-bar" aria-hidden="true"></div>
+      <div class="feature-icon" aria-hidden="true">💬</div>
+      <h3 class="feature-title">Shondan AI Chat</h3>
+      <p class="feature-desc">Talk to Shondan AI directly. It already knows your search context and answers follow-up questions intelligently.</p>
+      <span class="feature-tag">Gemini Powered</span>
+    </article>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════
+     VERDICTS
+════════════════════════════════════════ -->
+<section class="section" id="verdicts">
+  <div class="section-label reveal">Verdicts</div>
+  <h2 class="section-title reveal d1">Three possible verdicts.<br>Always with evidence.</h2>
+  <p class="section-body reveal d2">Every fact-check ends with a clear verdict backed by real sources from across the web.</p>
+
+  <div class="verdict-grid">
+    <article class="verdict-card verdict-true reveal d1" id="verdict-true">
+      <div class="verdict-emoji" aria-hidden="true">✅</div>
+      <div class="verdict-label">TRUE</div>
+      <p class="verdict-desc">The claim is verified by multiple reliable sources. The information checks out.</p>
+      <div class="verdict-pct" data-counter="88">88%</div>
+    </article>
+
+    <article class="verdict-card verdict-false reveal d2" id="verdict-false">
+      <div class="verdict-emoji" aria-hidden="true">❌</div>
+      <div class="verdict-label">FALSE</div>
+      <p class="verdict-desc">The claim contradicts verified information from credible sources. It is misinformation.</p>
+      <div class="verdict-pct" data-counter="94">94%</div>
+    </article>
+
+    <article class="verdict-card verdict-mislead reveal d3" id="verdict-mislead">
+      <div class="verdict-emoji" aria-hidden="true">⚠️</div>
+      <div class="verdict-label">MISLEADING</div>
+      <p class="verdict-desc">The claim contains some truth but is framed in a way that creates a false impression.</p>
+      <div class="verdict-pct" data-counter="71">71%</div>
+    </article>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════ -->
+<section class="section" id="how-it-works">
+  <div class="section-label reveal">How It Works</div>
+  <h2 class="section-title reveal d1">From claim to verdict<br>in seconds.</h2>
+
+  <div class="how-layout">
+    <!-- Steps list -->
+    <div class="steps-list">
+      <div class="steps-line" aria-hidden="true"></div>
+
+      <div class="step-item reveal" data-step="0" id="step-1">
+        <div class="step-num" aria-hidden="true">01</div>
+        <div class="step-body">
+          <h3 class="step-title">Submit your content</h3>
+          <p class="step-desc">Open Shondan and choose your input method. Paste a URL, upload a screenshot, or type the claim directly into the text box.</p>
+          <div class="step-tags">
+            <span class="step-tag tag-url">🔗 URL</span>
+            <span class="step-tag tag-image">🖼️ Image</span>
+            <span class="step-tag tag-text">📝 Text</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item reveal" data-step="1" id="step-2">
+        <div class="step-num" aria-hidden="true">02</div>
+        <div class="step-body">
+          <h3 class="step-title">AI extracts the claim</h3>
+          <p class="step-desc">For URLs, Shondan visits the page and reads it. For images, GPT-4o Vision extracts all visible text. For text, it goes directly to verification.</p>
+        </div>
+      </div>
+
+      <div class="step-item reveal" data-step="2" id="step-3">
+        <div class="step-num" aria-hidden="true">03</div>
+        <div class="step-body">
+          <h3 class="step-title">Web search &amp; cross-check</h3>
+          <p class="step-desc">GPT-4o searches the web for evidence, visits reliable sources, and cross-checks the claim against verified information from multiple outlets.</p>
+        </div>
+      </div>
+
+      <div class="step-item reveal" data-step="3" id="step-4">
+        <div class="step-num" aria-hidden="true">04</div>
+        <div class="step-body">
+          <h3 class="step-title">Verdict is delivered</h3>
+          <p class="step-desc">You receive a clear TRUE / FALSE / MISLEADING verdict with a confidence percentage and a list of clickable sources to verify yourself.</p>
+        </div>
+      </div>
+
+      <div class="step-item reveal" data-step="4" id="step-5">
+        <div class="step-num" aria-hidden="true">05</div>
+        <div class="step-body">
+          <h3 class="step-title">Summarize or chat</h3>
+          <p class="step-desc">Tap Get Summary for a 10-sentence breakdown, or open the Shondan AI chatbot to ask follow-up questions with full search context.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky visual panel -->
+    <aside class="how-visual" aria-hidden="true">
+      <div class="how-visual-label">Current Step</div>
+
+      <div class="how-visual-step active" id="visual-0">
+        <div class="how-visual-icon">📲</div>
+        <div class="how-visual-title">Choose your input</div>
+        <p class="how-visual-desc">URL, screenshot, or typed text — Shondan accepts whatever you have and starts from there.</p>
+      </div>
+      <div class="how-visual-step" id="visual-1">
+        <div class="how-visual-icon">🤖</div>
+        <div class="how-visual-title">AI reads the content</div>
+        <p class="how-visual-desc">GPT-4o Vision reads your input — even images — and extracts the core claim to verify.</p>
+      </div>
+      <div class="how-visual-step" id="visual-2">
+        <div class="how-visual-icon">🌐</div>
+        <div class="how-visual-title">Web search in real time</div>
+        <p class="how-visual-desc">Shondan searches the web live and cross-checks your claim against multiple credible sources.</p>
+      </div>
+      <div class="how-visual-step" id="visual-3">
+        <div class="how-visual-icon">⚡</div>
+        <div class="how-visual-title">Verdict delivered</div>
+        <p class="how-visual-desc">TRUE, FALSE, or MISLEADING — with a confidence score and links to the sources.</p>
+      </div>
+      <div class="how-visual-step" id="visual-4">
+        <div class="how-visual-icon">💬</div>
+        <div class="how-visual-title">Go deeper</div>
+        <p class="how-visual-desc">Read a full 10-sentence summary or chat with Shondan AI which already knows your context.</p>
+      </div>
+
+      <div class="how-progress">
+        <div class="how-progress-dot active"></div>
+        <div class="how-progress-dot"></div>
+        <div class="how-progress-dot"></div>
+        <div class="how-progress-dot"></div>
+        <div class="how-progress-dot"></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════
+     USER GUIDE
+════════════════════════════════════════ -->
+<section class="section" id="guide">
+  <div class="guide-header-row">
+    <div>
+      <div class="section-label reveal">User Guide</div>
+      <h2 class="section-title reveal d1" style="margin-bottom:0">How to use Shondan.</h2>
+    </div>
+    <p class="guide-header-sub reveal d2">Step-by-step guide for first-time users.</p>
+  </div>
+
+  <div class="guide-grid">
+    <div class="guide-card reveal d1" id="guide-1">
+      <div class="guide-card-num">1</div>
+      <div>
+        <div class="guide-card-title">Download and Install</div>
+        <p class="guide-card-desc">Click the Download APK button. Open the downloaded file on your Android phone and tap Install. Allow unknown sources if prompted.</p>
+      </div>
+    </div>
+
+    <div class="guide-card reveal d2" id="guide-2">
+      <div class="guide-card-num">2</div>
+      <div>
+        <div class="guide-card-title">Create Your Account</div>
+        <p class="guide-card-desc">Open Shondan and tap Create Account. Enter your name, email, and password. Your account stores fact-check history privately.</p>
+      </div>
+    </div>
+
+    <div class="guide-card reveal d3" id="guide-3">
+      <div class="guide-card-num">3</div>
+      <div>
+        <div class="guide-card-title">Choose Input Method</div>
+        <p class="guide-card-desc">On the home screen, choose the URL, Image, or Text tab depending on how you found the claim you want to check.</p>
+      </div>
+    </div>
+
+    <div class="guide-card reveal d4" id="guide-4">
+      <div class="guide-card-num">4</div>
+      <div>
+        <div class="guide-card-title">Paste URL or Upload Image</div>
+        <p class="guide-card-desc">For URL: copy and paste the link. For Image: select a screenshot from your gallery. For Text: type or paste the claim directly.</p>
+      </div>
+    </div>
+
+    <div class="guide-card reveal d1" id="guide-5">
+      <div class="guide-card-num">5</div>
+      <div>
+        <div class="guide-card-title">Tap Fact Check</div>
+        <p class="guide-card-desc">Hit the blue Fact Check button. Wait 5–10 seconds while Shondan searches the web. The result appears automatically.</p>
+      </div>
+    </div>
+
+    <div class="guide-card reveal d2" id="guide-6">
+      <div class="guide-card-num">6</div>
+      <div>
+        <div class="guide-card-title">Read the Verdict</div>
+        <p class="guide-card-desc">You'll see TRUE, FALSE, or MISLEADING with a confidence percentage. Scroll to see sources. Tap any source to open it in your browser.</p>
+      </div>
+    </div>
+
+    <div class="guide-card guide-wide reveal d1" id="guide-7">
+      <div class="guide-card-num">7</div>
+      <div>
+        <div class="guide-card-title">Get Summary or Chat with Shondan AI</div>
+        <p class="guide-card-desc">Tap Get Summary for a clear 10-sentence breakdown of the full fact-check. Or tap Chat with Shondan to open the AI chatbot — it already knows everything about your search and answers any follow-up questions about the claim, the sources, or the context.</p>
+      </div>
+    </div>
+
+    <div class="guide-card guide-wide reveal d2" id="guide-8">
+      <div class="guide-card-num">8</div>
+      <div>
+        <div class="guide-card-title">View Your History Anytime</div>
+        <p class="guide-card-desc">Tap the History tab at the bottom to see all past fact-checks organized by type — URL, Image, and Text checks. Tap any card for full details, or tap Re-check to verify it again with fresh results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TECH STACK
+════════════════════════════════════════ -->
+<div class="tech-bg">
+  <section class="section" id="tech-stack" style="padding-top:80px;padding-bottom:80px;">
+    <div class="section-label reveal">Powered By</div>
+    <h2 class="section-title reveal d1" style="font-size:clamp(26px,3.5vw,40px)">Built with the best AI.</h2>
+
+    <div class="tech-grid">
+      <div class="tech-card reveal d1" id="tech-gpt">
+        <span class="tech-emoji" aria-hidden="true">🤖</span>
+        <div class="tech-name">GPT-4o</div>
+        <div class="tech-role">Fact Checking + Images</div>
+      </div>
+      <div class="tech-card reveal d2" id="tech-gemini">
+        <span class="tech-emoji" aria-hidden="true">✨</span>
+        <div class="tech-name">Gemini AI</div>
+        <div class="tech-role">Shondan Chatbot</div>
+      </div>
+      <div class="tech-card reveal d3" id="tech-apify">
+        <span class="tech-emoji" aria-hidden="true">🕷️</span>
+        <div class="tech-name">Apify</div>
+        <div class="tech-role">Facebook Scraping</div>
+      </div>
+      <div class="tech-card reveal d4" id="tech-firebase">
+        <span class="tech-emoji" aria-hidden="true">🔥</span>
+        <div class="tech-name">Firebase</div>
+        <div class="tech-role">Auth + Database</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════
+     CTA / DOWNLOAD
+════════════════════════════════════════ -->
+<div class="cta-section" id="download">
+  <div class="cta-blob cta-blob-1" aria-hidden="true"></div>
+  <div class="cta-blob cta-blob-2" aria-hidden="true"></div>
+
+  <div class="cta-label reveal">Download Now</div>
+
+  <h2 class="cta-title reveal d1">
+    STOP <span class="cta-blue">SCROLLING.</span><br>
+    START <span class="cta-green">CHECKING.</span>
+  </h2>
+
+  <p class="cta-sub reveal d2">
+    Download Shondan for free. Install directly on your Android device. No Play Store needed.
+  </p>
+
+  <a href="Sondhan.apk" download="Sondhan.apk" class="btn-primary btn-download reveal d3" id="apk-download-btn">
+    <div class="btn-pulse-ring" aria-hidden="true"></div>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px">
+      <path d="M12 16l-4-4h3V4h2v8h3l-4 4z"/>
+      <path d="M4 20h16"/>
+    </svg>
+    Download Shondan APK — Free
+  </a>
+
+  <div class="cta-meta reveal d4">
+    <span>Android 8.0+ required</span>
+    <span class="cta-meta-dot" aria-hidden="true"></span>
+    <span>~15 MB</span>
+    <span class="cta-meta-dot" aria-hidden="true"></span>
+    <span>No account needed to download</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <!-- Brand -->
+    <div class="footer-brand">
+      <div class="footer-brand-logo">
+        <div class="footer-brand-dot" aria-hidden="true"></div>
+        SHON<span>DAN</span>
+      </div>
+      <p class="footer-tagline">
+        Real-time AI fact-checking for Bangladesh. Know the truth before you share.
+      </p>
+      <div class="footer-badge">Free Android App</div>
+    </div>
+
+    <!-- Product links -->
+    <div>
+      <div class="footer-col-title">Product</div>
+      <ul class="footer-col-links" role="list">
+        <li><a href="#about">About Shondan</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#verdicts">How Verdicts Work</a></li>
+        <li><a href="#download">Download APK</a></li>
+      </ul>
+    </div>
+
+    <!-- Guide links -->
+    <div>
+      <div class="footer-col-title">Guide</div>
+      <ul class="footer-col-links" role="list">
+        <li><a href="#guide">User Guide</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#tech-stack">Tech Stack</a></li>
+      </ul>
+    </div>
+
+    <!-- App info -->
+    <div>
+      <div class="footer-col-title">App Info</div>
+      <ul class="footer-col-links" role="list">
+        <li><a href="#">Version 1.0</a></li>
+        <li><a href="#">Android 8.0+</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Shondan. All rights reserved.</div>
+    <div class="footer-made">Built with ❤️ in <span>Bangladesh</span></div>
+  </div>
+</footer>
+
+<!-- ── FLOATING ACTION BUTTON ────────────── -->
+<a href="Sondhan.apk" download="Sondhan.apk" class="fab" id="fab" aria-label="Download Shondan APK">
+  <div class="fab-pulse-ring" aria-hidden="true"></div>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 16l-4-4h3V4h2v8h3l-4 4z"/>
+    <path d="M4 20h16"/>
+  </svg>
+  Download APK
+</a>
+
+<!-- ── SCRIPTS ───────────────────────────── -->
+<script src="js/main.js"></script>
+</body>
+</html>
