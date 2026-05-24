@@ -1,5 +1,5 @@
 /* ========================================
-   SHONDAN — main.js
+   SONDHAN — main.js
    All interactivity for the static site
 ======================================== */
 

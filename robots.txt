@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shondan.app/sitemap.xml
+Sitemap: https://sondhan.app/sitemap.xml
